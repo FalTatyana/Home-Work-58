@@ -1,13 +1,23 @@
 import { useState } from 'react'
 import './App.css'
-import Modal from './components/modal/modal'
+import Modal from './components/modal/Modal'
+import ButtonShow from './components/button/ButtonShow'
 
 const App = () => {
-const [modal, setModal] = useState('')
+  const [show, setShow] = useState(false)
 
   return (
     <>
-    <Modal/>
+    <ButtonShow
+    onClick={() => setShow(true)}
+    />
+      <Modal
+        title='Modal title'
+        show={show}
+        onClose={() => setShow(false)}
+      >
+        <p>Some modal content</p>
+      </Modal>
     </>
   )
 }
