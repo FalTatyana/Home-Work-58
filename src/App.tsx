@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 import Modal from './components/modal/Modal'
 import type { btn } from './components/types/types'
 import ModalFooter from './components/modal/ModalFooter'
