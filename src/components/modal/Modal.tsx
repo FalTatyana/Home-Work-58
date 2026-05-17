@@ -32,12 +32,11 @@ const Modal = ({ title, children, show, onClose }: Props) => {
                         <div className="modal-body">
                             {children}
                         </div>
-                        <ModalFooter children={""}/>
+                        <ModalFooter children={""} />
                     </div>
                 </div>
             </div>
         </>
-
     )
 }
 

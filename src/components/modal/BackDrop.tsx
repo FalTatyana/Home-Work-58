@@ -4,7 +4,10 @@ interface Props {
 
 const BackDrop = ({ show }: Props) => {
   return (
-    <div className="modal-backdrop show" style={{ display: show ? 'block' : "none" }}></div>
+    <div
+      className="modal-backdrop show"
+      style={{ display: show ? 'block' : "none" }}>
+    </div>
   )
 }
 

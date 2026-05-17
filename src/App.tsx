@@ -5,12 +5,7 @@ import type { btn } from './components/types/types'
 import ModalFooter from './components/modal/ModalFooter'
 import Alert from './components/alert/Alert'
 import ShowButtons from './components/buttons/ShowButtons'
-
-interface showButton {
-  onClick: () => void
-  text: string
-  type: string
-}
+import { AnimatePresence } from "motion/react"
 
 const App = () => {
   const [show, setShow] = useState(false)
@@ -48,21 +43,31 @@ const App = () => {
           ))}
         </ModalFooter>
       </Modal>
-      <Alert
-        onDismiss={() => setShowWarning(false)}
-        showAlert={showWarning}
-        type="warning"
-        clickDismissable={false}
-      >
-        <span>This a warning type of alert</span>
-      </Alert>
-      <Alert
-        showAlert={showSuccess}
-        type="success"
-        clickDismissable={true}
-      >
-        <span>This a success type of alert</span>
-      </Alert>
+      <AnimatePresence>
+        {showWarning && (
+          <Alert
+            key="warning"
+            onDismiss={() => setShowWarning(false)}
+            showAlert={showWarning}
+            type="warning"
+            clickDismissable={false}
+          >
+            <span>This is warning alert</span>
+          </Alert>
+        )}
+
+        {showSuccess && (
+          <Alert
+            key="success"
+            onDismiss={() => setShowSuccess(false)}
+            showAlert={showSuccess}
+            type="success"
+            clickDismissable={true}
+          >
+            <span>This is success alert</span>
+          </Alert>
+        )}
+      </AnimatePresence>
     </>
   )
 }
