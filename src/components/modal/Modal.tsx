@@ -1,4 +1,5 @@
 import BackDrop from "./BackDrop"
+import ModalFooter from "./ModalFooter"
 
 interface Props {
     title: string
@@ -31,15 +32,7 @@ const Modal = ({ title, children, show, onClose }: Props) => {
                         <div className="modal-body">
                             {children}
                         </div>
-                        <div className="modal-footer">
-                            <button
-                                onClick={onClose}
-                                type="button"
-                                className="btn btn-secondary"
-                                data-bs-dismiss="modal">
-                                Close
-                            </button>
-                        </div>
+                        <ModalFooter children={""}/>
                     </div>
                 </div>
             </div>
