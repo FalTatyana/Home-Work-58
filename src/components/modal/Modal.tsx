@@ -21,7 +21,7 @@ const Modal = ({ title, body, show, onClose, footer }: Props) => {
                 style={{ display: show ? 'block' : 'none' }}
             >
                 <div className="modal-dialog">
-                    <div className="modal-content">
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header">
                             <h5 className="modal-title">{title}</h5>
                             <button
