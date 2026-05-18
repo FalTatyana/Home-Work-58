@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Modal from './components/modal/Modal'
 import type { btn } from './components/types/types'
-import ModalFooter from './components/modal/ModalFooter'
 import Alert from './components/alert/Alert'
 import ShowButtons from './components/buttons/ShowButtons'
 import { AnimatePresence } from "motion/react"
@@ -12,8 +11,8 @@ const App = () => {
   const [showSuccess, setShowSuccess] = useState(false)
 
   const [modalBtns] = useState<btn[]>([
-    { type: 'primary', label: 'Continue', onClick: () => (console.log('Clicked continue')) },
-    { type: 'danger', label: 'Close', onClick: () => (console.log('Clicked close')) }
+    { type: 'primary', label: 'Continue', onClick: () => (alert('Clicked continue')) },
+    { type: 'danger', label: 'Close', onClick: () => (alert('Clicked close')) }
   ])
 
   return (
@@ -27,21 +26,19 @@ const App = () => {
         title='Modal title'
         show={show}
         onClose={() => setShow(false)}
-      >
-        <p>Some modal content</p>
-        <ModalFooter>
-          {modalBtns.map((btn, index) => (
-            <button
-              key={index}
-              type="button"
-              className={`btn btn-${btn.type}`}
-              onClick={btn.onClick}
-            >
-              {btn.label}
-            </button>
-          ))}
-        </ModalFooter>
-      </Modal>
+        body={<p>Some modal content</p>}
+        footer=
+        {modalBtns.map((btn, index) => (
+          <button
+            key={index}
+            type="button"
+            className={`btn btn-${btn.type}`}
+            onClick={btn.onClick}
+          >
+            {btn.label}
+          </button>
+        ))}
+      />
       <AnimatePresence>
         {showWarning && (
           <Alert

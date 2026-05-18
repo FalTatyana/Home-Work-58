@@ -1,18 +1,21 @@
-import BackDrop from "./BackDrop"
-import ModalFooter from "./ModalFooter"
 
 interface Props {
     title: string
-    children: React.ReactNode
+    body: React.ReactNode
+    footer: React.ReactNode
     show: boolean
     onClose: () => void
 }
 
-const Modal = ({ title, children, show, onClose }: Props) => {
+const Modal = ({ title, body, show, onClose, footer }: Props) => {
     return (
         <>
-            <BackDrop show={show} />
             <div
+                className="modal-backdrop show"
+                style={{ display: show ? 'block' : "none" }}>
+            </div>
+            <div
+                onClick={onClose}
                 className="modal show"
                 tabIndex={-1}
                 style={{ display: show ? 'block' : 'none' }}
@@ -30,9 +33,9 @@ const Modal = ({ title, children, show, onClose }: Props) => {
                             </button>
                         </div>
                         <div className="modal-body">
-                            {children}
+                            {body}
                         </div>
-                        <ModalFooter children={""} />
+                        <div className="modal-footer">{footer}</div>
                     </div>
                 </div>
             </div>
